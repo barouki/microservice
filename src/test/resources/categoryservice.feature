@@ -1,4 +1,4 @@
-Feature: Verfy the product service
+Feature: Verify the product service
 
   Scenario: client makes call to GET category
   	Given there is a category with id=1 and name="category 1"
