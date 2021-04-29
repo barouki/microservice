@@ -22,7 +22,7 @@ public class CategoryStepDefination extends StepDefinition{
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+
 	ResultActions action;
 	
 	@Given("there is a category with id={int} and name={string}")

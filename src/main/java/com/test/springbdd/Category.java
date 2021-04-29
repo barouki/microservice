@@ -1,9 +1,14 @@
 package com.test.springbdd;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.transaction.Transactional;
+
 
 @Entity
 public class Category {
@@ -12,7 +17,10 @@ public class Category {
     private int id;
     
 	String name;
-
+		
+	@OneToMany(mappedBy = "category")
+	private List<Product> products;
+	
 	public Category() {
 		
 	}
@@ -36,6 +44,10 @@ public class Category {
 	}
 
 	public String toString() {
-		return String.format("Category[id:%d, name:%s]", id, name);
+		return String.format("Category[id: %d, name: %s, products: %s]", id, name, products.toString());
 	}
+	
+	public List<Product> getProducts(){
+		return products;
+	}	
 }
