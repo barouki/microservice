@@ -1,43 +1,104 @@
 package com.test.springbdd;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name="product")
 public class Product {
 	
 	@Id
-	private int id;
-	
+	@Column(name="id")
+	int id;
+	@Column(name="name")
 	String name;
 
-	@ManyToOne
-	@JoinColumn(name="category_id")
-	private Category category;
+	String description;
+	int Units;
+	String status;
+	@Column(name="data")
+	String data;
+	float price;
+	boolean enable;
+
 	
 	public Product() {
 	}
 	
-	public Product(String name, Category category, int id) {
+	public Product(String name, int id) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.category = category;
+
 	}
-	
-	public String getName() {
-		return name;
+
+	public Product( String description, int Units, String status, String data, float price, int id){
+		super();
+
+		this.description = description;
+		this.Units = Units;
+		this.status = status;
+		this.data = data;
+		this.price = price;
+		this.id=id;
+		this.enable=true;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setUnits(int units) {
+		Units = units;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getDescription(){
+		return this.description;
+	}
+	public int getUnits(){
+		return this.Units;
+	}
+	public String getStatus(){
+		return this.status;
+	}
+
+	public String getData(){
+		return this.data;
+	}
+
+	public float getPrice(){
+		return this.price;
 	}
 
 	public int getId(){
-		return id;
+		return this.id;
 	}
-	
-	public void setName(String name) {
-		this.name = name;
+
+	public boolean getEnable(){
+		return this.enable;
 	}
+	public void setEnable(boolean bool){
+		this.enable=bool;
+	}
+
 	
 	public String toString() {
 		return String.format("Product[id:%d, name:%s]", id, name);
